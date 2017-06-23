@@ -1,0 +1,11 @@
+<p>
+<span class="node-content">
+  {{nodeContent.getText()}}
+  parent of
+  <span *ngFor="let c of childs">
+    {{c.nodeContent.getText()}}
+  </span>
+
+  <i class="fa fa-plus" (click)="createNode()"></i>
+</span>
+</p>

@@ -6,12 +6,14 @@ import { EditorComponent } from './editor/editor.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './header/header.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { NodeComponent } from './node/node.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
-    HeaderComponent
+    HeaderComponent,
+    NodeComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,9 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     NgbModule.forRoot()
   ],
   providers: [],
+  entryComponents: [
+    NodeComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

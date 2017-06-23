@@ -5,6 +5,12 @@ import {Connectable} from "./connectable";
  */
 
 export class Utterance implements Readable, Connectable {
+  private _text: string;
+
+  constructor(text: string) {
+    this._text = text;
+  }
+
   next(): Readable {
     throw new Error("Method not implemented.");
   }
@@ -14,7 +20,7 @@ export class Utterance implements Readable, Connectable {
   }
 
   getText(): string {
-    throw new Error("Method not implemented.");
+    return this._text;
   }
 
 
