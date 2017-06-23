@@ -1,28 +1,16 @@
 # Conversator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+Conversator is an interactive tool to design a conversational experience, AKA *chatbot*.
 
-## Development server
+## Why
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+While building a chatbot, maybe the most important aspect is to design an engaging conversation. It's a challenging task. Requires empathy, sense of humour. It also requires a tool to see the conversation structure, write text/emoji/whatever units and test the conversation flow.
 
-## Code scaffolding
+This tool should be open-source, intuitive, compatible and cloud-based.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+We entered the chatbot era in 2016 but, surprisingly enough, there not exists such a tool yet.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Create conversation structure and flow visually
+- Export to JSON
