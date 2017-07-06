@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
@@ -7,6 +7,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './header/header.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { NodeComponent } from './node/node.component';
+import {ConversationService} from "./conversation.service";
+import {DragScrollModule} from "angular2-drag-scroll";
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { NodeComponent } from './node/node.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    DragScrollModule
   ],
-  providers: [],
+  providers: [ConversationService],
   entryComponents: [
     NodeComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:      [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

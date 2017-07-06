@@ -1,11 +1,18 @@
-<p>
-<span class="node-content">
-  {{nodeContent.getText()}}
-  parent of
-  <span *ngFor="let c of childs">
-    {{c.nodeContent.getText()}}
+<div [style.position]="'absolute'" [style.left.px]="node.x" [style.top.px]="node.y" [id]="node.id" #nodeEl>
+  <span *ngIf="!editing" class="node-content" (dblclick)="edit()">
+    {{node.text}}
   </span>
 
+  <div *ngIf="editing" class="input-group">
+    <input class="form-control" title="Node content"
+           *ngIf="editing" type="text"
+           [value]="node.text" (input)="node.text = $event.target.value">
+    <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" (click)="editComplete()">
+          <i class="fa fa-check-circle"></i>
+        </button>
+      </span>
+  </div>
+
   <i class="fa fa-plus" (click)="createNode()"></i>
-</span>
-</p>
+</div>

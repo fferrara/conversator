@@ -1,5 +1,10 @@
-<div class="editor-container">
-  <div class="nodes" #nodes>
+<div class="workspace">
 
+<div class="editor-scroll"  drag-scroll>
+  <div class="editor-container" #container>
+    <conversation-node *ngFor="let n of nodes; let i = index"
+                       [node]="n"
+                       (nodeCreated)="onNodeCreated($event)"></conversation-node>
   </div>
+</div>
 </div>

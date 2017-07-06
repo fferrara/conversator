@@ -1,9 +1,11 @@
-import {
-  Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild,
-  ViewContainerRef
-} from '@angular/core';
-import {NodeComponent} from "../node/node.component";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {Utterance} from "../../models/utterance";
+import {ConversationService} from "../conversation.service";
+import {Readable} from "../../models/readable";
+
+import {jsPlumb} from "jsplumb";
+import {ConversationNode} from "../../models/editor/node";
+import {Connectable} from "../../models/connectable";
 
 @Component({
   selector: 'editor',
@@ -11,36 +13,72 @@ import {Utterance} from "../../models/utterance";
   styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
-  @ViewChild("nodes", { read: ViewContainerRef }) nodeContainer;
+  @ViewChild('container') nodeContainer: ElementRef;
 
-  private nodeFactory: ComponentFactory<NodeComponent>;
+  nodes: Array<ConversationNode>;
+  private plumb: any;
 
-  constructor(private resolver: ComponentFactoryResolver) {
-    this.nodeFactory  = this.resolver.resolveComponentFactory(NodeComponent);
-
+  constructor(public conversation: ConversationService) {
+    this.nodes = conversation.load()
+      .map((r: Readable, index) => {
+      return new ConversationNode(125, getYOffset(index), r);
+    });
 
   }
 
   ngOnInit() {
-    let u1 = new Utterance('aaaaa');
-    let u2 = new Utterance('bbbbb');
-    let u3 = new Utterance('ccccc');
-    let root: ComponentRef<NodeComponent> = this.nodeContainer.createComponent(this.nodeFactory);
-    root.instance.nodeContent = u1;
+    jsPlumb.ready(() => {
+      this.plumb = jsPlumb.getInstance();
+      this.plumb.setContainer(this.nodeContainer.nativeElement);
 
-    let child1: ComponentRef<NodeComponent> = this.createNode(root.instance);
-    child1.instance.nodeContent = u2;
+      this.nodes.forEach((node: ConversationNode) => {
+        this.buildNode(node);
 
-    let child2: ComponentRef<NodeComponent> = this.createNode(child1.instance);
-    child2.instance.nodeContent = u3;
+        if (node.hasNext()){
+          let utterance = node.readable as Utterance;
+          let nextNode = this.nodes.find(node => node.id === utterance.next().getId());
+          this.buildConnection(node, nextNode)
+        }
+      })
+    });
   }
 
-  private createNode(parent: NodeComponent) {
-    let child: ComponentRef<NodeComponent> = this.nodeContainer.createComponent(this.nodeFactory);
-    parent.childs.push(child.instance);
-    child.instance.nodeCreated.subscribe(this.createNode.bind(this));
+  onNodeCreated(event) {
+    let newReadable = new Utterance('NOVO' + this.nodes.length, 'novooo')
+    let newNode = new ConversationNode(125, getYOffset(this.nodes.length), newReadable);
+    this.nodes.push(newNode);
+    event.node.next = newNode;
+    setTimeout(() => {
+      this.buildNode(newNode);
+      this.buildConnection(event.node, newNode);
+      }, 0);
 
-    return child;
   }
 
+  private buildNode(node: ConversationNode) {
+    console.log(node.id);
+    this.plumb.addEndpoint(node.id, {
+      anchor: 'Bottom',isSource: true, isTarget: false, endpoint:[ "Dot", { radius:5 } ]
+    });
+    this.plumb.addEndpoint(node.id, {
+      anchor: 'Top',isSource: false, isTarget: true, endpoint:[ "Dot", { radius:5 } ]
+    });
+
+    this.plumb.draggable(node.id)
+  }
+
+  private buildConnection(node: ConversationNode, nextNode: ConversationNode) {
+    this.plumb.connect({
+      source: node.id,
+      target: nextNode.id,
+      anchors: ['Bottom', 'Top'],
+      endpointStyle:{
+        radius: 5
+      }
+    })
+  }
+}
+
+function getYOffset(index: number): number {
+  return 20 + (80 * index)
 }

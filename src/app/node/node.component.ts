@@ -1,22 +1,39 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from "@angular/core";
 import {Readable} from "../../models/readable";
-import {Connectable} from "../../models/connectable";
+
+import {jsPlumb} from "jsplumb";
+import {ConversationNode} from "../../models/editor/node";
 
 @Component({
-  selector: 'conv-node',
+  selector: 'conversation-node',
   templateUrl: './node.component.html',
   styleUrls: ['./node.component.css']
 })
 export class NodeComponent implements OnInit {
-  @Input('content') nodeContent: Readable;
-  @Input() childs: Array<NodeComponent>;
+  @ViewChild('nodeEl') nodeElement: ElementRef;
+  @Input('node') node: ConversationNode;
   @Output() nodeCreated = new EventEmitter();
 
+  editing: boolean = false;
+
   constructor() {
-    this.childs = [];
   }
 
   ngOnInit() {
+    jsPlumb.ready(() => {
+      let plumb = jsPlumb.getInstance();
+
+
+    });
+  }
+
+  edit(){
+    this.editing = true;
+  }
+
+  editComplete() {
+    this.editing = false;
+    console.log('store')
   }
 
   createNode() {

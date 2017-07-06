@@ -9,6 +9,14 @@ export abstract class Question implements Readable {
     throw new Error("Method not implemented.");
   }
 
+  updateText(text: string) {
+    throw new Error("Method not implemented.");
+  }
+
+  getId(): string {
+    throw new Error("Method not implemented.");
+  }
+
   answers(answer: string): void{
 
   }

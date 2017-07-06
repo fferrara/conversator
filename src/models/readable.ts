@@ -3,5 +3,7 @@
  */
 
 export interface Readable {
-  getText(): string;
+  getText(): string,
+  getId(): string,
+  updateText(text: string)
 }
