@@ -8,7 +8,6 @@ export class ConversationNode {
   readable: Readable;
   x: number;
   y: number;
-  next?: ConversationNode
 
   public constructor(x, y, readable){
     this.x = x;

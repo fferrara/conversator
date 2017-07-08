@@ -1,6 +1,6 @@
 .workspace {
   position: absolute;
-  top: 0;
+  top: 56px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -9,7 +9,7 @@
 
 .editor-scroll {
   position: absolute;
-  top: 56px;
+  top: 0;
   left: 0;
   right: -14px;
   bottom: -14px;

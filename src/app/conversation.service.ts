@@ -1,19 +1,24 @@
-import { Injectable } from '@angular/core';
-import {Readable} from "../models/readable";
+import {Injectable} from "@angular/core";
 import {Utterance} from "../models/utterance";
+import {Conversation} from "../models/conversation";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class ConversationService {
+export class ConversationLoadService {
 
   constructor() {
   }
 
-  load(): Array<Readable> {
-    let u3 = new Utterance('UNO', 'Che bisibi bodidi bu, asd pescila');
-    let u2 = new Utterance('DUE', 'A be la bi a bi o usu', u3);
-    let u1 = new Utterance('TRE', 'Ciao! A bi a be ubu', u2);
+  load(): Observable<Conversation> {
+    let elements = {
+      'UNO':  new Utterance('UNO', 'Che bisibi bodidi bu, asd pescila'),
+      'DUE': new Utterance('DUE', 'A be la bi a bi o usu', 'UNO'),
+      'TRE': new  Utterance('TRE', 'Ciao! A bi a be ubu', 'DUE')
+    };
 
-    return  [u1, u2, u3];
+    return Observable.of(new Conversation(elements));
   }
+
+
 
 }

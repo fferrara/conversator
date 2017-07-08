@@ -6,10 +6,10 @@ import {Connectable} from "./connectable";
 
 export class Utterance implements Readable, Connectable {
   private _text: string;
-  private _next: Readable;
+  private _next: string;
   private _id: string;
 
-  constructor(id: string, text: string, next?: Readable) {
+  constructor(id: string, text: string, next?: string) {
     this._id = id;
     this._text = text;
     this._next = next || null;
@@ -19,7 +19,7 @@ export class Utterance implements Readable, Connectable {
     return this._id;
   }
 
-  next(): Readable {
+  next(): string {
     return this._next;
   }
 
@@ -35,5 +35,11 @@ export class Utterance implements Readable, Connectable {
     this._text = text;
   }
 
+  isBlocking(): boolean {
+    return false;
+  }
 
+  public static build(data): Utterance {
+    return new Utterance(data.id, data.text, data.next);
+  }
 }

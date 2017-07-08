@@ -4,7 +4,7 @@ Conversator is an interactive tool to design a conversational experience, AKA *c
 
 ## Why
 
-While building a chatbot, maybe the most important aspect is to design an engaging conversation. It's a challenging task. Requires empathy, sense of humour. It also requires a tool to see the conversation structure, write text/emoji/whatever units and test the conversation flow.
+While building a chatbot, maybe the most important aspect is designing a pleasant conversation. It's a challenging task. Requires **empathy**, sense of humour. It also requires a tool to see the conversation structure, write text/emoji/whatever units and test the conversation flow.
 
 This tool should be open-source, intuitive, compatible and cloud-based.
 

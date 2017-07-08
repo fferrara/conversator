@@ -4,6 +4,7 @@ import {Readable} from "./readable";
  */
 
 export interface Connectable {
-  next(): Readable;
+  next(): string;
+  isBlocking(): boolean;
   hasNext(): boolean;
 }

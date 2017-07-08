@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ExporterService} from "../exporter.service";
+import {ConversationLoadService} from "../conversation.service";
 
 @Component({
   selector: 'app-header',
@@ -8,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   navbarCollapsed: boolean = true;
 
-  constructor() { }
+  constructor(public loader: ConversationLoadService, public exporter: ExporterService) { }
 
   ngOnInit() {
+  }
+
+  exportConversation() {
+    this.loader.load()
+      .map(conversation => this.exporter.serialize(conversation))
+      .subscribe(serialized => this.show(serialized));
+  }
+
+  private show(serialized: string){
+    console.log(serialized);
   }
 
 }

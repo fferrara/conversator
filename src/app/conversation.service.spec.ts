@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ConversationService } from './conversation.service';
+import { ConversationLoadService } from './conversation.service';
 
-describe('ConversationService', () => {
+describe('ConversationLoadService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConversationService]
+      providers: [ConversationLoadService]
     });
   });
 
-  it('should be created', inject([ConversationService], (service: ConversationService) => {
+  it('should be created', inject([ConversationLoadService], (service: ConversationLoadService) => {
     expect(service).toBeTruthy();
   }));
 });

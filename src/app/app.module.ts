@@ -7,8 +7,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './header/header.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { NodeComponent } from './node/node.component';
-import {ConversationService} from "./conversation.service";
+import {ConversationLoadService} from "./conversation.service";
 import {DragScrollModule} from "angular2-drag-scroll";
+import {ExporterService} from "./exporter.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {DragScrollModule} from "angular2-drag-scroll";
     NgbModule.forRoot(),
     DragScrollModule
   ],
-  providers: [ConversationService],
+  providers: [ConversationLoadService, ExporterService],
   entryComponents: [
     NodeComponent
   ],
