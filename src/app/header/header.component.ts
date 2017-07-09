@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ExporterService} from "../exporter.service";
-import {ConversationLoadService} from "../conversation.service";
+import {ConversationLoadService} from "../conversation-load.service";
+import {ConversationStateService} from "../conversation-state.service";
+import 'rxjs/add/operator/take'
 
 @Component({
   selector: 'app-header',
@@ -10,13 +12,14 @@ import {ConversationLoadService} from "../conversation.service";
 export class HeaderComponent implements OnInit {
   navbarCollapsed: boolean = true;
 
-  constructor(public loader: ConversationLoadService, public exporter: ExporterService) { }
+  constructor(public conversation: ConversationStateService, public exporter: ExporterService) { }
 
   ngOnInit() {
   }
 
   exportConversation() {
-    this.loader.load()
+    this.conversation.get()
+      .take(1)
       .map(conversation => this.exporter.serialize(conversation))
       .subscribe(serialized => this.show(serialized));
   }

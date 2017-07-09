@@ -7,16 +7,19 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './header/header.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { NodeComponent } from './node/node.component';
-import {ConversationLoadService} from "./conversation.service";
+import {ConversationLoadService} from "./conversation-load.service";
 import {DragScrollModule} from "angular2-drag-scroll";
 import {ExporterService} from "./exporter.service";
+import {ConversationStateService} from "./conversation-state.service";
+import { NodeListComponent } from './node-list/node-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
     HeaderComponent,
-    NodeComponent
+    NodeComponent,
+    NodeListComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import {ExporterService} from "./exporter.service";
     NgbModule.forRoot(),
     DragScrollModule
   ],
-  providers: [ConversationLoadService, ExporterService],
+  providers: [ConversationLoadService, ConversationStateService, ExporterService],
   entryComponents: [
     NodeComponent
   ],

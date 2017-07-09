@@ -23,6 +23,10 @@ export class Utterance implements Readable, Connectable {
     return this._next;
   }
 
+  setNext(id: string) {
+    this._next = id;
+  }
+
   hasNext(): boolean {
     return this._next !== null;
   }

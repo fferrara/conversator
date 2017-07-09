@@ -26,17 +26,16 @@ export class Conversation {
     this.elements = elements;
   }
 
-  first(): Observable<Readable> {
-    return Observable.of(this.elements['START']);
+  first(): Readable {
+    return this.elements['START'];
   }
 
-  get(id: string): Observable<Readable> {
-    return Observable.of(this.elements[id]);
+  get(id: string): Readable {
+    return this.elements[id];
   }
 
-  getAll(): Observable<Readable> {
-    let values = Object.keys(this.elements).map(key => this.elements[key]);
-    return Observable.from(values);
+  getAll(): Readable[] {
+    return Object.keys(this.elements).map(key => this.elements[key]);
   }
 
   static buildElement(element: Element  ) {
@@ -60,4 +59,11 @@ export class Conversation {
     return new Conversation(elements);
   }
 
+  add(u: Utterance) {
+    this.elements[u.getId()] = u;
+  }
+
+  update(readable: Readable) {
+    this.elements[readable.getId()] = readable;
+  }
 }

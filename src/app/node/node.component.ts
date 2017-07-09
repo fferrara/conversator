@@ -3,6 +3,7 @@ import {Readable} from "../../models/readable";
 
 import {jsPlumb} from "jsplumb";
 import {ConversationNode} from "../../models/editor/node";
+import {ConversationStateService} from "../conversation-state.service";
 
 @Component({
   selector: 'conversation-node',
@@ -13,18 +14,15 @@ export class NodeComponent implements OnInit {
   @ViewChild('nodeEl') nodeElement: ElementRef;
   @Input('node') node: ConversationNode;
   @Output() nodeCreated = new EventEmitter();
+  @Output() nodeUpdated = new EventEmitter();
 
   editing: boolean = false;
 
-  constructor() {
+  constructor(public conversation: ConversationStateService) {
   }
 
   ngOnInit() {
-    jsPlumb.ready(() => {
-      let plumb = jsPlumb.getInstance();
 
-
-    });
   }
 
   edit(){
@@ -33,7 +31,7 @@ export class NodeComponent implements OnInit {
 
   editComplete() {
     this.editing = false;
-    console.log('store')
+    this.conversation.update(this.node.readable)
   }
 
   createNode() {

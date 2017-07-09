@@ -1,0 +1,2 @@
+<conversation-node *ngFor="let n of nodes; let i = index" [node]="n"
+                   (nodeCreated)="onNodeCreated($event)"></conversation-node>

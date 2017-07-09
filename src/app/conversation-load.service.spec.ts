@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ConversationLoadService } from './conversation.service';
+import { ConversationLoadService } from './conversation-load.service';
 
 describe('ConversationLoadService', () => {
   beforeEach(() => {

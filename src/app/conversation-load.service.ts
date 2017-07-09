@@ -11,9 +11,9 @@ export class ConversationLoadService {
 
   load(): Observable<Conversation> {
     let elements = {
-      'UNO':  new Utterance('UNO', 'Che bisibi bodidi bu, asd pescila'),
-      'DUE': new Utterance('DUE', 'A be la bi a bi o usu', 'UNO'),
-      'TRE': new  Utterance('TRE', 'Ciao! A bi a be ubu', 'DUE')
+      'UNO':  new Utterance('UNO', 'Che bisibi bodidi bu, asd pescila', 'DUE'),
+      'DUE': new Utterance('DUE', 'A be la bi a bi o usu', 'TRE'),
+      'TRE': new  Utterance('TRE', 'Ciao! A bi a be ubu')
     };
 
     return Observable.of(new Conversation(elements));
