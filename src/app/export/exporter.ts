@@ -1,4 +1,4 @@
-import {Conversation} from "../../models/conversation";
+import {Conversation} from "../models/conversation";
 /**
  * Created by Flavio on 06/07/2017.
  */

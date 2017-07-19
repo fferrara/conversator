@@ -1,14 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {Utterance} from "../../models/utterance";
-import {ConversationLoadService} from "../conversation-load.service";
-
 import {jsPlumb} from "jsplumb";
+import "rxjs/add/operator/mergeMap";
+import "rxjs/add/operator/map";
+import {ConversationStateService} from "../../services/conversation-state.service";
 import {ConversationNode} from "../../models/editor/node";
-import 'rxjs/add/operator/mergeMap'
-import 'rxjs/add/operator/map'
-import {ConversationStateService} from "../conversation-state.service";
-import {Observable} from "rxjs/Observable";
 import {Readable} from "../../models/readable";
+import {Utterance} from "../../models/utterance";
 
 @Component({
   selector: 'editor',

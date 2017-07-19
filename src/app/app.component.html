@@ -1,3 +1,5 @@
-<app-header></app-header>
+<app-header (onToggleJsonBar)="toggleJsonBar($event)"></app-header>
+<json-bar [allowEdit]="true"
+          *ngIf="jsonBarOpened"></json-bar>
 <editor></editor>
 

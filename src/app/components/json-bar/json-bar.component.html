@@ -1,0 +1,6 @@
+<div class="bar-container">
+  <div *ngIf="!allowEdit" class="backdrop" (click)="onBackdropClick()"></div>
+  <aside class="json-bar">
+    <pre>{{conversationJson}}</pre>
+  </aside>
+</div>

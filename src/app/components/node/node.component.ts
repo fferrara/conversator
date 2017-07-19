@@ -1,9 +1,8 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from "@angular/core";
-import {Readable} from "../../models/readable";
 
 import {jsPlumb} from "jsplumb";
 import {ConversationNode} from "../../models/editor/node";
-import {ConversationStateService} from "../conversation-state.service";
+import {ConversationStateService} from "../../services/conversation-state.service";
 
 @Component({
   selector: 'conversation-node',

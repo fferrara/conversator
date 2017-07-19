@@ -2,16 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { EditorComponent } from './editor/editor.component';
+import { EditorComponent } from './components/editor/editor.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './components/header/header.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import { NodeComponent } from './node/node.component';
-import {ConversationLoadService} from "./conversation-load.service";
+import { NodeComponent } from './components/node/node.component';
+import {ConversationLoadService} from "./services/conversation-load.service";
 import {DragScrollModule} from "angular2-drag-scroll";
-import {ExporterService} from "./exporter.service";
-import {ConversationStateService} from "./conversation-state.service";
-import { NodeListComponent } from './node-list/node-list.component';
+import {ExporterService} from "./services/exporter.service";
+import {ConversationStateService} from "./services/conversation-state.service";
+import { NodeListComponent } from './components/node-list/node-list.component';
+import { JsonBarComponent } from './components/json-bar/json-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NodeListComponent } from './node-list/node-list.component';
     EditorComponent,
     HeaderComponent,
     NodeComponent,
-    NodeListComponent
+    NodeListComponent,
+    JsonBarComponent
   ],
   imports: [
     BrowserModule,

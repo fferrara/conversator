@@ -1,0 +1,35 @@
+.bar-container {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  height: calc(100% - 56px);
+  width: 100%;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.75;
+  pointer-events: auto;
+  z-index: 99999998;
+}
+
+.json-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 30%;
+  z-index: 99999999;
+  background-color: #fff;
+  padding: .1em .5em;
+  overflow: auto;
+  -webkit-box-shadow: 0 0 2.5em rgba(85,85,85,.5);
+  -moz-box-shadow: 0 0 2.5em rgba(85,85,85,.5);
+  box-shadow: 0 0 2.5em rgba(85,85,85,.5);
+}

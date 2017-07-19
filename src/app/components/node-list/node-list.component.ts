@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {jsPlumb} from "jsplumb";
 import {ConversationNode} from "../../models/editor/node";
-import {Utterance} from "models/utterance";
+import {Utterance} from "../../models/utterance";
 
 @Component({
   selector: 'app-node-list',

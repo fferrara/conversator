@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import {Exporter} from "./export/exporter";
+import {Injectable} from "@angular/core";
 import {Conversation} from "../models/conversation";
-import {JsonExporter} from "./export/json-exporter";
+import {JsonExporter} from "../export/json-exporter";
 
 enum ExportFormat {
   JSON = 1
