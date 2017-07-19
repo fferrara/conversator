@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Conversation} from "../models/conversation";
 import {JsonExporter} from "../export/json-exporter";
 
-enum ExportFormat {
+export enum ExportFormat {
   JSON = 1
 }
 

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NodeListComponent } from './node-list.component';
+import {NodeComponent} from "../node/node.component";
+import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
 describe('NodeListComponent', () => {
   let component: NodeListComponent;
@@ -8,7 +10,8 @@ describe('NodeListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NodeListComponent ]
+      declarations: [ NodeListComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

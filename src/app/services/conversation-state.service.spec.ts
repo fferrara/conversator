@@ -1,11 +1,18 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ConversationStateService } from './conversation-state.service';
+import {ConversationLoadService} from "./conversation-load.service";
+import {ConversationLoadMock} from "./conversation-load.service.mock";
 
 describe('ConversationStateService', () => {
+  let conversationLoad = {
+    provide: ConversationLoadService,
+    useClass: ConversationLoadMock
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConversationStateService]
+      providers: [ConversationStateService, conversationLoad]
     });
   });
 

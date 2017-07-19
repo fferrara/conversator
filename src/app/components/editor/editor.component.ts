@@ -19,9 +19,7 @@ export class EditorComponent implements OnInit {
   private plumb: any;
 
   constructor(public conversation: ConversationStateService) {
-    conversation.get()
-      .map(conversation => conversation.getAll())
-      .subscribe(readables => this.storeNewNodes(readables))
+
   }
 
   private storeNewNodes(readables: Array<Readable>){
@@ -32,7 +30,9 @@ export class EditorComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.conversation.get()
+      .map(conversation => conversation.getAll())
+      .subscribe(readables => this.storeNewNodes(readables))
   }
 
   onNodeCreated(event) {
